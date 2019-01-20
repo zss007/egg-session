@@ -4,7 +4,7 @@ const assert = require('assert');
 
 module.exports = {
   /**
-   * set session external store
+   * set session external store 设置 sessionStore
    *
    * ```js
    * app.sessionStore = {
@@ -38,6 +38,7 @@ module.exports = {
     assert(typeof store.get === 'function', 'store.get must be function');
     assert(typeof store.set === 'function', 'store.set must be function');
     assert(typeof store.destroy === 'function', 'store.destroy must be function');
+    // 调用 egg-core 中的 toAsyncFunction 方法，使用 co 模块将 generator function 封装为 async function 格式
     store.get = this.toAsyncFunction(store.get);
     store.set = this.toAsyncFunction(store.set);
     store.destroy = this.toAsyncFunction(store.destroy);
@@ -45,7 +46,7 @@ module.exports = {
   },
 
   /**
-   * get sessionStore
+   * get sessionStore 获取 sessionStore
    *
    * @return {Object} session store instance
    */
